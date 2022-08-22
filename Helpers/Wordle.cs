@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WordleGame.Helpers
 {
-    public class WordleHelpers
+    public class Wordle
     {
 
         public void Game()
