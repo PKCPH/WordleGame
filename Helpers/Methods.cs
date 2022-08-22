@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -39,7 +40,7 @@ namespace WordleGame.Helpers
                         Console.BackgroundColor = ConsoleColor.Green;
                         Console.Write(guess[i]);
                     }
-                    if (hiddenWord.Contains(guess[i]))
+                    else if (hiddenWord.Contains(guess[i]))
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow;
                         Console.Write(guess[i]);
@@ -51,10 +52,7 @@ namespace WordleGame.Helpers
                     }
                 }
             }
-
-
             Console.ResetColor();
-
         }
 
 
@@ -62,12 +60,15 @@ namespace WordleGame.Helpers
 
         public static string GetRandomWord()
         {
-            System.Diagnostics.Debugger.Launch();
-            var path = GetPathToList();
+            //System.Diagnostics.Debugger.Launch();
+            //var path = GetPathToList();
+            var relativePath = Path.GetFullPath(@"..\\..\\..\\Helpers\listofwords.txt");
+
             ////path to textFile
             //var path = Path.Combine(Directory.GetCurrentDirectory(), @"WordLists\WordListEnglish.txt");
 
-            var lines = File.ReadAllLines(path);
+            var lines = File.ReadAllLines(relativePath);
+
 
             var r = new Random();
             //random number
@@ -79,19 +80,20 @@ namespace WordleGame.Helpers
         }
 
 
-        public static string GetPathToList()
-        {
-            //current directory passed codecase to getdirectoryname to get info about outputdirectory
-            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+        //public static string GetPathToList()
+        //{
+        //    //current directory passed codecase to getdirectoryname to get info about outputdirectory
+        //    var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
 
-            //combining pathg with short relative path of textfile path
-            var iconPath = Path.Combine(outPutDirectory, "C:\\Users\\PatrickKlingaa\\source\\repos\\WordleGame\\Helpers\\listofwords.txt");
+        //    //combining pathg with short relative path of textfile path
+        //    var iconPath = Path.Combine(outPutDirectory, "C:\\Users\\PatrickKlingaa\\source\\repos\\WordleGame\\Helpers\\listofwords.txt");
 
-            //converting new path to relativer path string with the Uri.LocalPath property.
-            string icon_path = new Uri(iconPath).LocalPath;
+        //    var relativePath = Path.GetFullPath("https://raw.githubusercontent.com/PKCPH/WordleGame/master/Helpers/listofwords.txt");
+        //    //converting new path to relativer path string with the Uri.LocalPath property.
+        //    string icon_path = new Uri(iconPath).AbsolutePath;
 
-            return iconPath;
-        }
+        //    return relativePath;
+        //}
     }
 }
 
