@@ -9,22 +9,9 @@ using System.Threading.Tasks;
 
 namespace WordleGame.Helpers
 {
-    public class Wordle
+    public class WordFinder
     {
-
-        public void Game()
-        {
-            string hiddenWord = GetRandomWord();
-            string? guess = null;
-
-            for (int counter = 0; counter < 5; counter++)
-            {
-                guess = Console.ReadLine();
-                WordChecker(guess, hiddenWord, counter);
-            }
-        }
-
-        public static void WordChecker(string guess, string hiddenWord, int counter)
+        public void WordChecker(string guess, string hiddenWord, int counter)
         {
             Console.CursorLeft = 0;
             //if word is 5 letters
@@ -51,14 +38,12 @@ namespace WordleGame.Helpers
                         Console.Write(guess[i]);
                     }
                 }
+                Console.WriteLine();
             }
             Console.ResetColor();
         }
 
-
-
-
-        public static string GetRandomWord()
+        public string GetRandomWord()
         {
             //System.Diagnostics.Debugger.Launch();
             //var path = GetPathToList();

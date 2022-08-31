@@ -1,4 +1,5 @@
 ﻿using WordleGame.Helpers;
+using WordleGame.GameExecution;
 
 namespace WordleGame
 {
@@ -7,7 +8,7 @@ namespace WordleGame
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Choose a game to play: \n 1. Wordle");
+            Console.WriteLine("Choose a game to play: \n 1. Wordle, 2. coming soon..");
 
             var input = Console.ReadLine();
 
@@ -16,18 +17,17 @@ namespace WordleGame
                 case "1":
                     Console.WriteLine("Guess the word: ");
 
-                    Wordle wordleGame = new Wordle();
-                    wordleGame.Game();
+                    Wordle wordle = new Wordle();
+                    wordle.Game();
+
+                    break;
+                case "2":
 
                     break;
                 default:
                     break;
             }
-
-
-
             Console.ReadKey();
         }
     }
-
 }
