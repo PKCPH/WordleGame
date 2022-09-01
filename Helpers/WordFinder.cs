@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
+using NetSpell.SpellChecker;
+
 
 namespace WordleGame.Helpers
 {
@@ -23,7 +25,22 @@ namespace WordleGame.Helpers
                 exceptionString = "Your guess needs to be a valid word with letters from A-Z";
                 return true;
             }
+            if (!IsWordInDictionary(guess)) { exceptionString = "Word is not in dictionary"; return true; }
+
+
             else exceptionString = "";  return false;
+
+
+        }
+
+        public bool IsWordInDictionary(string guess)
+        {
+            Spelling spelling = new Spelling();
+
+            bool isWordTrue = spelling.Dictionary.Equals(guess);
+
+            if (isWordTrue) return true;
+            else return false;
         }
 
         public void WordChecker(string guess, string hiddenWord, int counter)
