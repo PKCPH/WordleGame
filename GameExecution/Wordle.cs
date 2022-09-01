@@ -14,22 +14,35 @@ namespace WordleGame.GameExecution
 
         public void Game()
         {
-
             //var OxfordDictionariesAPI = new OxfordDictionariesAPI.OxfordDictionaryClient();
-            
-            
-            
+
             string hiddenWord = wordFinder.GetRandomWord();
             string? guess = null;
 
+            Console.WriteLine($"Guess the word: {hiddenWord}");
+
             for (int counter = 0; counter < 5; counter++)
             {
-                guess = Console.ReadLine();
+                guess = Console.ReadLine().ToUpper();
+
+                //string exceptionString;
+                bool isWordNotValid = wordFinder.IsWordNotValid(guess, out var exceptionString);
+                if (isWordNotValid)
+                {
+                    Console.WriteLine(exceptionString);
+                    counter = counter - 1;
+                }
+                else if (guess == hiddenWord)
+                {
+                    Console.WriteLine($"You guessed correct!");
+                    break;
+                }
                 wordFinder.WordChecker(guess, hiddenWord, counter);
+
             }
 
 
-             Console.WriteLine($"The word was {hiddenWord}");
+            Console.WriteLine($"The word was {hiddenWord}");
         }
     }
 }

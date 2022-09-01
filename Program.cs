@@ -8,26 +8,26 @@ namespace WordleGame
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Choose a game to play: \n 1. Wordle, 2. coming soon..");
+            Console.WriteLine("Choose a game to play: \n 1. Wordle, 2. Exit");
+            bool menuIsTrue = true;
 
-            var input = Console.ReadLine();
-
-            switch (input)
+            while (menuIsTrue)
             {
-                case "1":
-                    Console.WriteLine("Guess the word: ");
-
-                    Wordle wordle = new Wordle();
-                    wordle.Game();
-
-                    break;
-                case "2":
-
-                    break;
-                default:
-                    break;
+                var input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        Wordle wordle = new Wordle();
+                        wordle.Game();
+                        break;
+                    case "2":
+                        menuIsTrue = false;
+                        break;
+                    default:
+                        menuIsTrue = true;
+                        break;
+                }
             }
-            Console.ReadKey();
         }
     }
 }
