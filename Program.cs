@@ -8,7 +8,7 @@ namespace WordleGame
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Choose a game to play: \n 1. Wordle, 2. WordSmith 3. Exit Application (not a game lol...)");
+            Console.WriteLine("Choose a game to play1: \n 1. Wordle, 2. WordSmith 3. Exit Application (not a game lol...)");
             bool menuIsTrue = true;
 
             while (menuIsTrue)
